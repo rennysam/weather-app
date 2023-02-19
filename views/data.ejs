@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Weather App - <%= data.name %></title>
+  </head>
+  <body>
+    <div class="m-5 container vh-100">
+      <% if(data.cod!=404) {%>
+      <h1 class="p-4 text-center">Weather data</h1>
+
+      <div class="mx-auto card" style="width: 30rem">
+        <img
+          src="https://openweathermap.org/img/wn/<%= data.weather[0].icon %>@2x.png"
+          class="card-img-top"
+          style="width: 10rem"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title"><%=data.name %></h5>
+          <p class="card-text"><%=data.weather[0].description %></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%=data.weather[0].main %></li>
+            <li class="list-group-item">Temprature: <%=data.main.temp %></li>
+            <li class="list-group-item">Humidity: <%=data.main.humidity %></li>
+            <li class="list-group-item">Pressure: <%=data.main.pressure %></li>
+          </ul>
+
+          <a href="/" class="btn btn-dark">Home</a>
+        </div>
+      </div>
+      <% } else {%>
+      <div class="container vh-100">
+        <div class="mx-auto">
+          <h1>Location not found</h1>
+          <a href="/" class="btn btn-dark">Home</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
